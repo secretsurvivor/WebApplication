@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reply Examples</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/component.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/font.css") }}">
+</head>
+<body style="background-color: rgb(219, 219, 219)">
+    {% from "components/claim.html" import claim %}
+    {% from "components/reply.html" import reply %}
+
+    <div class="component_holder-base">
+        {{ build_claim(1) }}
+    </div>
+</body>
+</html>

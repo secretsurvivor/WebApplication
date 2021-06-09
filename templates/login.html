@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/login.css") }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/font.css") }}">
+    <script src="{{ url_for("static", filename="js/login.js") }}"></script>
+</head>
+<body onload="loginInit()">
+    <table>
+        <tr>
+            <td class="tab" id="login_tab" onclick="selectTab(this)">
+                Login
+            </td>
+            <td class="tab" id="register_tab" onclick="selectTab(this)">
+                Register
+            </td>
+        </tr> {% with messages = get_flashed_messages() %}{% if messages %}
+        <tr>
+            <td colspan="2" class="login_error_message">
+                {% for message in messages %}
+                    <p>
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endif %}{% endwith %}<tr>
+            <td colspan="2" id="login_content">
+                <form method="get" action="account">
+                    <input type="hidden" name="process" value="login" readonly>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" required><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" required><br>
+                    <input type="submit" value="Login">
+                </form>
+            </td>
+            <td colspan="2" id="register_content" style="display: none">
+                <form method="get" action="account">
+                    <input type="hidden" name="process" value="register" readonly>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br>
+                    <label for="consent" style="font-size: 12px">To register, please accept our<br> Terms and Conditions.</label>
+                    <input type="checkbox" id="consent" name="consent" required><br>
+                    <input type="submit" value="Register">
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

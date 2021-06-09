@@ -1,0 +1,193 @@
+/* Common Component Classes */
+.component_base {
+    background-color: white;
+    border-radius: 2px;
+    padding: 5px;
+    border-spacing: 5px;
+    overflow: auto;
+    width: 100%;
+    margin-top: 8px;
+}
+._right {
+    float: right;
+}
+._left {
+    float: left;
+}
+.component_info {
+    color: gray;
+    font-size: 11px;
+}
+.component_content {
+    color: black;
+    font-size: 16px;
+    padding-left: 8px;
+    font-family: Lato, serif;
+}
+.component_menu-button {
+    cursor: pointer;
+    color: dimgray;
+    font-size: 30px;
+    margin-top: -20px;
+    margin-bottom: -5px;
+}
+.component_menu-button::before {
+    content: "...";
+}
+.component_editor {
+    background-color: white;
+}
+
+/* Reply Classes */
+.component_reply-reply {
+    margin-top: 10px;
+    border-left-color: dimgrey;
+    border-left-style: solid;
+    border-left-width: 2px;
+    position: relative;
+    left: 6px;
+    box-sizing: border-box;
+}
+.component_reply-reply > .component_base {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 5px;
+}
+
+/* Claim Classes */
+.component_title-claim {
+    font-family: Lato, serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+.component_replies_load {
+    text-align: center;
+    color: dimgrey;
+    font-size: 10px;
+    cursor: pointer;
+    display: table;
+    margin: -10px auto;
+}
+.component_replies_load::before {
+    content: "⇣ Load Replies ⇣";
+}
+
+/* Topic Classes */
+.component_title-topic {
+    font-family: Lato, serif;
+    font-weight: bold;
+    font-size: 30px;
+    position: relative;
+    top: 5px;
+}
+
+/* Holder Classes */
+@media screen and (max-width: 750px) {
+    .component_holder-head, .component_holder-head > * {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1300px) and (min-width: 750px) {
+    .component_holder-head, .component_holder-head > * {
+        width: 85%;
+    }
+}
+@media screen and (min-width: 1300px){
+    .component_holder-head, .component_holder-head > * {
+        width: 75%;
+    }
+}
+.component_holder-head, .component_holder-head > * {
+    box-sizing: border-box;
+    display: table;
+    text-align: center;
+}
+.component_holder-base > *:nth-child(1) {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.component_holder-base > * {
+    width: 95%;
+    margin: auto auto 5px;
+}
+
+.component_topic_layout {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+}
+.component_topic_layout > *:nth-child(1) {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+.component_topic_layout > *:nth-child(1) > * {
+    width: 60%;
+    margin: auto;
+}
+.component_topic_layout > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: fit-content;
+    max-width: 40%;
+    margin: 10px;
+}
+
+/* Global Tags */
+.tag {
+    border-radius: 25px;
+    font-size: 12px;
+    padding: 8px;
+    color: white;
+    background-color: white;
+}
+.tag_clarification {
+    background-color: darkblue;
+}
+.tag_clarification::before {
+    content: "Clarification";
+}
+.tag_supportingArgument {
+    background-color: coral;
+}
+.tag_supportingArgument::before {
+    content: "Supporting Argument";
+}
+.tag_counterArgument {
+    background-color: crimson;
+}
+.tag_counterArgument::before {
+    content: "Counter Argument";
+}
+.tag_evidence {
+    background-color: darkorchid;
+}
+.tag_evidence::before {
+    content: "Evidence";
+}
+.tag_support {
+    background-color: dodgerblue;
+}
+.tag_support::before {
+    content: "Support";
+}
+.tag_rebuttal {
+    background-color: green;
+}
+.tag_rebuttal::before {
+    content: "Rebuttal";
+}
+.tag_opposed {
+    background-color: brown;
+}
+.tag_opposed::before {
+    content: "Opposed";
+}
+.tag_equivalent {
+    background-color: gold;
+}
+.tag_equivalent::before {
+    content: "Equivalent";
+}

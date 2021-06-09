@@ -1,0 +1,89 @@
+body {
+    background-color: white;
+}
+.tab {
+    cursor: pointer;
+    margin-bottom: 50px;
+    width: 1%;
+}
+.tab_selected {
+    border-bottom-style: solid;
+    border-bottom-color: darkblue;
+    border-bottom-width: 4px;
+}
+form {
+    margin-left: 18%;
+    margin-top: 18%;
+}
+input {
+    margin-bottom: 10px;
+}
+
+.login_account-base {
+    width: 80%;
+    box-sizing: border-box;
+    margin: auto;
+    font-size: 12px;
+    overflow: hidden;
+}
+.login_account-base td {
+    border-bottom-width: 1px;
+    border-bottom-color: dimgrey;
+    border-bottom-style: solid;
+    display: block;
+    padding: 10px 0;
+}
+.login_account-base .login_logout, .login_date_created {
+    border-style: none;
+}
+.login_username {
+
+}
+.login_account_icon {
+    height: 80px;
+    background-image: url(../resources/profilepic.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 120px;
+    background-position-y: 5px;
+    background-position-x: center;
+}
+.login_password-link {
+    float: right;
+    cursor: pointer;
+}
+.login_date_created {
+
+}
+.login_posted_items {
+    float: left;
+}
+.login_posted_items-link {
+    float: right;
+    cursor: pointer;
+}
+.login_logout {
+    background-color: indianred;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    font-family: Lato, serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+}
+.login_error_message {
+    border-radius: 5px;
+    background-color: indianred;
+    color: white;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+.login_error_message > p {
+    margin-bottom: 1px;
+    margin-top: 5px;
+}

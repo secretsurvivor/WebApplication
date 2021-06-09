@@ -1,0 +1,8 @@
+{% macro topic_editor(edit="") %}
+    <form action="/dev/post/topic" method="post" class="component_editor">
+        {% if reply %}<input type="hidden" name="reply" value="{{ reply }}" readonly>{% endif %}
+        <label for="header"></label>
+        <input id="editor_header" type="text" name="header"><br>
+        <input type="button" {% if not edit %}onclick="submit_edit_topic(this)" value="Update" {% else %}onclick="post_topic(this)" value="Post"{% endif %}>
+    </form>
+{% endmacro %}

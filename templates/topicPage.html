@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block raw_content %}
+    <div class="component_topic_layout">
+        <div id="head-topic">
+            {{ build_topic(topic_id) }}
+        </div>
+        {{ build_claims_from_topic(topic_id)|safe }}
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    {{ build_topic_from_claim(claim_id)|safe }}
+    <div id="related_claims">
+        {% if related_claim %}{{ build_related_claims(related_claim)|safe }}{% endif %}
+    </div>
+    <div id="head-claim" class="component_holder-base">
+        {{ build_claim(claim_id)|safe }}
+        <div id="replies">
+            {{ build_replies(claim_id)|safe }}
+        </div>
+    </div>
+{% endblock %}

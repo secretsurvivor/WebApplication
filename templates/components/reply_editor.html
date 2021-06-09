@@ -1,0 +1,22 @@
+{% macro reply_editor(claim, reply="", edit="") %}
+    <form action="/dev/post/reply" method="post" class="component_editor">
+        <input type="hidden" name="claim" value="{{ claim }}" readonly>
+        {% if reply %}<input type="hidden" name="reply" value="{{ reply }}" readonly>{% endif %}
+        <textarea id="editor_content" name="content" required></textarea><br>
+    {% if not edit %}
+        <label for="tag">Tag: </label>
+        <select id="editor_tag" name="tag" required>
+            {% if reply %}
+                <option value="tag_evidence">Evidence</option>
+                <option value="tag_support">Support</option>
+                <option value="tag_rebuttal">Rebuttal</option>
+            {% else %}
+                <option value="tag_clarification">Clarification</option>
+                <option value="tag_supportingArgument">Supporting Argument</option>
+                <option value="tag_counterArgument">Counter Argument</option>
+            {% endif %}
+        </select><br>
+    {% endif %}
+        <input type="button" {% if edit %}onclick="submit_edit_reply(this)" value="Update" {% else %}{% if reply %}onclick="post_reply_reply(this)"{% else %}onclick="post_reply(this)"{% endif %} value="Post"{% endif %}>
+    </form>
+{% endmacro %}

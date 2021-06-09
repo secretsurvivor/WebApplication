@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/component.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="{{ url_for("static", filename="js/jquery-3.5.1.js") }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <script src="{{ url_for("static", filename="js/component.js") }}"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for("static", filename="resources/favicon-32x32.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for("static", filename="resources/favicon-16x16.png") }}">
+    <link rel="manifest" href="{{ url_for("static", filename="resources/site.webmanifest") }}">
+</head>
+<body> {% set user = current_user_info() %}
+    <div class="base_navigation">
+        <div class="base_navigation-whitespace"></div>
+        <button class="base_home_button" onclick="window.open('/home', '_self')">
+            Home
+        </button>
+        <div class="base_navigation-whitespace"></div>
+        <form class="base_search_bar" hidden>
+            <input type="text" name="search_bar" placeholder="Search...">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <div class="base_navigation-whitespace"></div>
+        <button id="login_button" class="base_login" onclick="login_frame_show()">
+            {% if user %}
+                Account
+            {% else %}
+                Login
+            {% endif %}
+        </button>
+        <div class="base_navigation-whitespace"></div>
+    </div>
+    <iframe id="login_frame" onload="update_current_user()" style="display: none" {% if user %}src="/account"{% else %}src="/login"{% endif %}></iframe>
+    <div id="login_document_background" onclick="login_frame_hide()" style="display: none"></div>
+    <div id="component_menu" style="display: none"></div>
+    <div id="component_menu_background" onclick="component_hide_menu()" style="display: none"></div>
+    <div class="base_scroll_buffer"></div>
+    <div class="base_viewport">
+        <div>
+            <div class="base_viewport-back" id="viewport_back" onclick="branch_back()" hidden>Back</div>
+        </div>
+        <div class="component_holder-head">
+            {% block content %}{% endblock %}
+        </div>
+        <div>
+
+        </div>
+    </div>
+    {% block raw_content %}
+    {% endblock %}
+</body>
+</html>

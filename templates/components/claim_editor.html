@@ -1,0 +1,17 @@
+{% macro claim_editor(topic, reply="", edit="") %}
+    <form action="/dev/post/claim" method="post" class="component_editor">
+        <input type="hidden" name="topic" value="{{ topic }}" readonly>
+        {% if reply %}<input type="hidden" name="reply" value="{{ reply }}" readonly>{% endif %}
+        <label for="header">Title: </label>
+        <input id="editor_header" type="text" name="header" required><br>
+        <textarea id="editor_content" name="content" required></textarea><br>
+        {% if reply %}
+            <label for="tag">Tag: </label>
+            <select id="editor_tag" name="tag" required>
+                <option value="tag_opposed">Opposed</option>
+                <option value="tag_equivalent">Equivalent</option>
+            </select><br>
+        {% endif %}
+        <input type="button" {% if edit %}onclick="submit_edit_claim(this)" value="Update" {% else %}{% if reply %}onclick="post_claim_ex(this)"{% else %}onclick="post_claim(this)"{% endif %} value="Post"{% endif %}>
+    </form>
+{% endmacro %}

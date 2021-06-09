@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block raw_content %}
+    {% with user = current_user_info() %}
+        <div id="home_topic_menu">
+            <div class="component_menu-button" {% if not user %} style="display: none"{% endif %} onclick="open_menu(this, {'type':'home_topic', 'account_id':'0', 'c_id':'0'})"></div>
+        </div>
+    {% endwith %}
+    <div class="base_home_topic-viewer">
+        {{ build_all_topics()|safe }}
+    </div>
+{% endblock %}

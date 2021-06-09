@@ -1,0 +1,17 @@
+{% macro topic(title, dateTime, info, link="") %}
+    <table class="component_base">
+        <tr>
+            <td class="_right component_info">
+                {{ dateTime }}
+            </td>
+            <td class="_left component_title-topic" {% if link %} style="cursor: pointer" onclick="open_topic_branch({{ link }})"{% endif %}>
+                {{ title }}
+            </td>
+        </tr>
+        {% with user = current_user_info() %}
+            <tr>
+                <td colspan="2" class="_right component_menu-button" {% if not user %}style="display: none"{% endif %} onclick="open_menu(this, {{ info }})">
+            </tr>
+        {% endwith %}
+    </table>
+{% endmacro %}

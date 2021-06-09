@@ -1,0 +1,33 @@
+{% macro claim(title, content, username, dateTime, info, tag="", reply="", link="") %}
+    <table class="component_base">
+        <tr>
+            <td class="_left component_info">
+                Posted by {{ username }}
+            </td>
+            <td class="_right component_info">
+                {{ dateTime }}
+            </td>
+        </tr>
+        <tr>
+            <td class="_left component_title-claim" {% if link %} style="cursor: pointer;" onclick="open_claim_branch({{ link }})"{% endif %}>
+                {{ title }}
+            </td>
+            <td{% if tag %} class="_right tag {{ tag }}"{% else %} class="_right tag"{% endif %}>
+        </tr>
+        <tr>
+            <td colspan="2" class="_left component_content">
+                {{ content }}
+            </td>
+        </tr>
+        {% with user = current_user_info() %}
+            <tr>
+                <td colspan="2" class="_right component_menu-button"{% if not user %} style="display: none"{% endif %} onclick="open_menu(this, {{ info }})">
+            </tr>
+        {% endwith %}
+        {% if reply %}
+        <tr>
+            <td colspan="2" class="component_replies_load">
+        </tr>
+        {% endif %}
+    </table>
+{% endmacro %}

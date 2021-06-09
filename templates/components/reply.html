@@ -1,0 +1,30 @@
+{% macro reply(content, username, dateTime, info, tag="", reply="") %}
+    <table class="component_base">
+        <tr>
+            <td class="_left component_info"> {# Shows the username #}
+                Posted by {{ username }}
+            </td>
+            <td class="_right component_info"> {# Shows the date and time #}
+                {{ dateTime }}
+            </td>
+        </tr>
+        <tr>
+            <td class="_left component_content"> {# This is the content #}
+                {{ content }}
+            </td>
+            <td{% if tag %} class="_right tag {{ tag }}"{% else %} class="_right tag"{% endif %}> {# This is where the tag goes #}
+        </tr>
+        {% with user = current_user_info() %}
+            <tr>
+                <td colspan="2" class="_right component_menu-button"{% if not user %}style="display: none"{% endif %} onclick="open_menu(this, {{ info }})"> {# Button for the menu #}
+            </tr>
+        {% endwith %}
+        {% if reply %}
+        <tr>
+            <td colspan="2" class="component_reply-reply"> {# Replies go here #}
+                {{ reply }}
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+{% endmacro %}

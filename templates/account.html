@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/font.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/login.css") }}">
+</head>
+<body>
+    <table class="login_account-base">
+        {% set info = get_account(account_id) %}
+        <tr> <!-- Account Icon -->
+            <td colspan="2" class="login_account_icon">
+        </tr>
+        <tr> <!-- Username-->
+            <td colspan="2" class="login_username">
+                {{ info[1] }}
+            </td>
+        </tr>
+        <tr> <!-- Change password -->
+            <td colspan="2" class="login_password-link" hidden>
+                Click to change password &rarr;
+            </td>
+        </tr>
+        <tr> <!-- Elements posted and maybe a link to see them all -->
+            <td class="login_posted_items-link" hidden>
+                Click to view all &rarr;
+            </td>
+            <td class="login_posted_items"> {% set stats = posted_objects_num(account_id) %}
+                Objects posted: {{ (stats[0]|length) + (stats[1]|length) + (stats[2]|length) }}
+            </td>
+        </tr>
+        <tr> <!-- Date account was created -->
+            <td colspan="2" class="login_date_created">
+                {{ format_datetime(info[4]) }}
+            </td>
+        </tr>
+        <tr> <!-- Log out button -->
+            <td colspan="2">
+                <a href="/logout" class="login_logout">
+                    Logout
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
